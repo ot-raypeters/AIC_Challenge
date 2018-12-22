@@ -4,18 +4,30 @@
   "description": "A submission for SpringBoard's AIC skills test",
   "main": "index.js",
   "dependencies": {
+    "babel-jest": "^23.6.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "jest": "^23.6.0",
     "webpack": "^4.28.2"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.2.2"
+  },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "test:dev": "jest --watch"
+  },
+  "jest": {
+    "verbose": true,
+    "bail": true,
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    }
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ot-raypeters/AIC_Challenge.git"
   },
-  "author": "me@raypeters.com",
+  "author": "Ray Peters <me@raypeters.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/ot-raypeters/AIC_Challenge/issues"

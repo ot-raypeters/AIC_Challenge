@@ -1,56 +1,19 @@
-/**
- *  Hi team,
- *
- *  I chose to submit my answers in JavaScript.
- *  This means this code won't be able to run in HackerRank.
- *  I hope this is acceptable and am sorry for any inconvenience!
- *
- */
+import StudentReport from './components/StudentReport/StudentReport';
 
-;(() => {
-  const getStudentReports = (student = {}) => {
-    const { enrollment, name, subject } = student;
-    const createStudentReport = ({ code, grade }) =>
-      ({ code, grade, enrollment, name });
-
-    return subject.map(createStudentReport);
-  };
-
-  const formatStudentReport = ({ code, grade, enrollment, name }) =>
-    `${code} ${grade} ${enrollment} ${name}`;
-
-  const getStudentReportsAnswer = ({ report }) => {
-    const reports = report.reduce((acc, student) => {
-      const studentReports = getStudentReports(student) || [];
+class GradeReporter {
+  static getStudentReportsBySubject(report = []) {
+    return report.reduce((acc, student) => {
+      const toStudentReport = StudentReport.create.bind(this, student);
+      const studentReports = student.subject.map(toStudentReport) || [];
       return [...acc, ...studentReports];
     }, []);
+  }
 
-    return reports
-      .map(formatStudentReport)
+  static getStudentReports(report = []) {
+    return GradeReporter.getStudentReportsBySubject(report)
+      .map(studentReport => studentReport.format())
       .sort();
-  };
+  }
+};
 
-  const sampleReport = {
-    "report": [
-      {
-        "enrollment": "rit2011001",
-        "name": "Julia",
-        "subject": [
-          { "code": "DSA", "grade": "A" }
-        ]
-      },
-      {
-        "enrollment": "rit2011020",
-        "name": "Samantha",
-        "subject": [
-          { "code": "COM", "grade": "B" },
-          { "code": "DSA", "grade": "A" }
-        ]
-      }
-    ]
-  };
-
-  getStudentReportsAnswer(sampleReport)
-    .forEach(studentReport => console.log(studentReport));
-
-})();
+export default GradeReporter;
