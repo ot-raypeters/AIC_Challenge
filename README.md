@@ -1,8 +1,17 @@
 # AIC Challenge
 
-Completed by Ray Peters.
+## Dependencies
 
-## References
+This code requires `node` and `npm` to run.
+Installs can be found here: [https://nodejs.org/en/](https://nodejs.org/en/)
 
-https://www.springboard.com/workshops/ai-machine-learning-career-track/
+## Testing
 
+```
+npm install
+npm run test
+```
+
+## Author
+
+Submitted by Ray Peters on Saturday, December 22, 2018.
