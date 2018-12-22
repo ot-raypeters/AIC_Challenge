@@ -69,7 +69,7 @@ describe('BalancedBrackets', () => {
     });
   });
 
-  describe('with test sample data', () => {
+  describe('with sample input data', () => {
     it('should return the expected output', () => {
       const firstResult = BalancedBrackets.solve('[{(1+2) * (x-4)}]');
       expect(firstResult).toBe('Y [{()()}]');

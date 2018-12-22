@@ -1,61 +1,62 @@
-/**
- *  Hi team,
- *
- *  I chose to submit my answers in JavaScript.
- *  This means this code won't be able to run in HackerRank.
- *  I hope this is acceptable and am sorry for any inconvenience!
- *
- */
+export const MAPPING_CHARS = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
 
-;(() => {
-  const shortUrlChars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+const toSum = (sum, char) =>
+  sum += char.charCodeAt(0);
 
-  const hashString = (str) => {
-    const toSum = (sum, char) =>
-      sum += char.charCodeAt(0);
+class UrlShortener {
+  static hashString(str = '') {
+    if (!str) {
+      return MAPPING_CHARS[0];
+    }
 
-    const sum = Array.from(str).reduce(toSum, 0);
-    const offset = sum % shortUrlChars.length;
+    const charCodeSum = Array.from(str).reduce(toSum, 0);
+    const offset = charCodeSum % MAPPING_CHARS.length;
 
-    const hash = shortUrlChars.charAt(offset);
+    const hash = MAPPING_CHARS.charAt(offset);
     return hash;
-  };
+  }
 
-  const partitionString = (url, partitionsCount) => {
-    const partitionSize = Math.ceil(url.length / partitionsCount);
+  static partitionString(string = '', length = 2) {
+    if (length < 2) {
+      return [string];
+    }
+
+    const isStringSmallerThanPartition = string.length < length;
+    const partitionCount = isStringSmallerThanPartition ? string.length : length;
+
+    const partitionSize = Math.ceil(string.length / partitionCount);
     const partitions = [];
 
-    const l = url.length;
+    const l = string.length;
     let i = 0;
 
-    for (; i < partitionsCount; ++i) {
+    for (; i < partitionCount; ++i) {
       const offset = i * partitionSize;
-      const partition = url.substr(offset, partitionSize);
+      const partition = string.substr(offset, partitionSize);
       partitions.push(partition);
     }
 
     return partitions;
-  };
+  }
 
-  const hashUrl = (url, length) => {
-    const urlPartitions = partitionString(url, length);
-    const hashedPartitions = urlPartitions.map(hashString);
-    return hashedPartitions.join('');
-  };
+  static encodeString(string = '', length = 2) {
+    const stringPartitions = UrlShortener.partitionString(string, length);
+    const hashedPartitions = stringPartitions.map(UrlShortener.hashString);
+    const encodedString = hashedPartitions.join('');
 
-  const getShortUrlAnswer = (longUrl) => {
-    const hash = hashUrl(longUrl, 6);
+    if (encodedString.length < length) {
+      const [firstMappingChar] = MAPPING_CHARS;
+      const diff = length - encodedString.length;
+      return encodedString.padStart(diff, firstMappingChar);
+    }
+
+    return encodedString;
+  }
+
+  static solve(longUrl) {
+    const hash = UrlShortener.encodeString(longUrl, 6);
     return `http://sprng.brd/${hash}`;
-  };
+  }
+}
 
-  const tests = [
-    'https://docs.python.org/2/library/re.html#match-objects',
-    'https://github.com/deeppomf/DeepCreamPy/blob/master/readme_images/',
-    'https://docs.python.org/2/library/re.html#match-objects',
-    'https://github.com/deeppomf/DeepCreamPy/blob/master/readme_images'
-  ];
-
-  const results = tests.map(test => getShortUrlAnswer(test));
-  results.forEach(result => console.log(result));
-
-})();
+export default UrlShortener;
