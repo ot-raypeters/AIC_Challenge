@@ -19,10 +19,10 @@ Submitted by Ray Peters on Saturday, December 22, 2018.
 ## Todo
 
 - [x] Update readme for testing instructions
-- [ ] Add tests to `BalancedBrackets`
-- [ ] Refactor `BalancedBrackets`
-- [ ] Add tests to `GradeReporter`
-- [ ] Refactor `GradeReporter`
-- [ ] Add tests to `UrlShortener`
-- [ ] Refactor `UrlShortener`
+- [x] Add tests to `BalancedBrackets`
+- [x] Refactor `BalancedBrackets`
+- [x] Add tests to `GradeReporter`
+- [x] Refactor `GradeReporter`
+- [x] Add tests to `UrlShortener`
+- [x] Refactor `UrlShortener`
 - [ ] Add continuous integration to github?
