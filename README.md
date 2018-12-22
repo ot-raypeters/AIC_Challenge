@@ -15,6 +15,13 @@ npm install
 npm run test
 ```
 
+## Testing output
+
+![Sample output](https://raw.githubusercontent.com/ot-raypeters/AIC_challenge/master/images/sample-test-run.png)
+
+![Sample output](https://raw.githubusercontent.com/ot-raypeters/AIC_challenge/master/images/sample-test-run2.png)
+
+
 ## Todo
 
 - [x] Update readme for testing instructions
