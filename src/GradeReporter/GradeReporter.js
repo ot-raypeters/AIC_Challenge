@@ -1,16 +1,15 @@
 import StudentReport from './components/StudentReport/StudentReport';
 
 class GradeReporter {
-  static getStudentReportsBySubject(report = []) {
-    return report.reduce((acc, student) => {
-      const toStudentReport = StudentReport.create.bind(this, student);
-      const studentReports = student.subject.map(toStudentReport) || [];
+  static getStudentReportsBySubject(students = []) {
+    return students.reduce((acc, student) => {
+      const studentReports = StudentReport.getReportsByStudent(student);
       return [...acc, ...studentReports];
     }, []);
   }
 
-  static getStudentReports(report = []) {
-    return GradeReporter.getStudentReportsBySubject(report)
+  static getStudentReports(students = []) {
+    return GradeReporter.getStudentReportsBySubject(students)
       .map(studentReport => studentReport.format())
       .sort();
   }

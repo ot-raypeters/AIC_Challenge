@@ -35,6 +35,17 @@ describe('StudentReport', () => {
     });
   });
 
+  describe('getReportsByStudent()', () => {
+    it('should return a StudentReport for every subject', () => {
+      const sampleStudentWith2Subjects = SampleReport.report[1];
+      const result = StudentReport.getReportsByStudent(sampleStudentWith2Subjects);
+
+      expect(result.length).toBe(2);
+      expect(result[0]).toBeInstanceOf(StudentReport);
+      expect(result[1]).toBeInstanceOf(StudentReport);
+    });
+  });
+
   describe('format()', () => {
     it('should return a string formatted by "{{code}} {{grade}} {{enrollment}} {{name}}"', () => {
       const studentReport = StudentReport.create(sampleStudent, sampleSubject);

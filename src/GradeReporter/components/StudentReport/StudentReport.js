@@ -9,6 +9,15 @@ class StudentReport {
     return new StudentReport(student, subject);
   }
 
+  static getReportsByStudent(student = {}) {
+    if (!Array.isArray(student.subject)) {
+      return [];
+    }
+
+    return student.subject
+      .map(subject => StudentReport.create(student, subject));
+  }
+
   format() {
     return `${this.code} ${this.grade} ${this.enrollment} ${this.name}`;
   }
