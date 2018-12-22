@@ -1,0 +1,24 @@
+{
+  "name": "aic_challenge",
+  "version": "1.0.0",
+  "description": "A submission for SpringBoard's AIC skills test",
+  "main": "index.js",
+  "dependencies": {
+    "jest": "^23.6.0",
+    "webpack": "^4.28.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ot-raypeters/AIC_Challenge.git"
+  },
+  "author": "me@raypeters.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ot-raypeters/AIC_Challenge/issues"
+  },
+  "homepage": "https://github.com/ot-raypeters/AIC_Challenge#readme"
+}
