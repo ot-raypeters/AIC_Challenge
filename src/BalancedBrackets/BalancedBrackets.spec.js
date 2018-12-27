@@ -1,10 +1,6 @@
 import BalancedBrackets from './BalancedBrackets';
 
 describe('BalancedBrackets', () => {
-  it('should return true when true', () => {
-    expect(true).toBe(true);
-  });
-
   describe('getBracketCharacters()', () => {
     it('should return an empty array when string is empty', () => {
       const result = BalancedBrackets.getBracketCharacters();

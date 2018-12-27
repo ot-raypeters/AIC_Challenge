@@ -1,5 +1,6 @@
 import GradeReporter from './GradeReporter';
 import StudentReport from './components/StudentReport/StudentReport';
+
 import SampleReport from './sample-report.json';
 const [studentWith1Subject, studentWith2Subjects] = SampleReport.report;
 
@@ -68,9 +69,11 @@ describe('GradeReporter', () => {
       const results = GradeReporter.getStudentReports(report);
       expect(results.length).toBe(3);
 
-      expect(results[0]).toEqual('COM B rit2011020 Samantha');
-      expect(results[1]).toEqual('DSA A rit2011001 Julia');
-      expect(results[2]).toEqual('DSA A rit2011020 Samantha');
+      expect(results).toEqual([
+        'COM B rit2011020 Samantha',
+        'DSA A rit2011001 Julia',
+        'DSA A rit2011020 Samantha'
+      ]);
     });
   });
 });

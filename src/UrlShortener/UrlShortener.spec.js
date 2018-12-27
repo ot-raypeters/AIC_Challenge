@@ -25,7 +25,7 @@ describe('UrlShortener', () => {
   describe('partitionString()', () => {
     const longTestString = 'the quick brown fox jumped over the lazy dog';
 
-    it('should an array with unmodified string when partitionCount is 0', () => {
+    it('should return an array with unmodified string when partitionCount is 0', () => {
       const result = UrlShortener.partitionString(longTestString, 0);
       expect(result).toEqual(expect.any(Array));
 
@@ -33,7 +33,7 @@ describe('UrlShortener', () => {
       expect(result).toContain(longTestString);
     });
 
-    it('should an array with unmodified string when partitionCount is a negative integer', () => {
+    it('should return an array with unmodified string when partitionCount is a negative integer', () => {
       const result = UrlShortener.partitionString(longTestString, -5);
       expect(result).toEqual(expect.any(Array));
 
